@@ -1,0 +1,22 @@
+name: CI/CD - Docker Image Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir imagen Docker
+        run: |
+          docker build -t practica-despliegue:latest .
+      
+      - name: Despliegue simulado
+        run: echo "Pipeline ejecutado correctamente - Imagen Docker creada"
